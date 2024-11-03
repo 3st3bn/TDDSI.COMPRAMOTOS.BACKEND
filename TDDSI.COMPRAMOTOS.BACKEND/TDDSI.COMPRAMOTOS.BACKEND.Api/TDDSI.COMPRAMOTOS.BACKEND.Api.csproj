@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.18">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\TDDSI.COMPRAMOTOS.BACKEND.Application\TDDSI.COMPRAMOTOS.BACKEND.Application.csproj" />
+		<ProjectReference Include="..\TDDSI.COMPRAMOTOS.BACKEND.Infrastructure.PostgreSql\TDDSI.COMPRAMOTOS.BACKEND.Infrastructure.PostgreSql.csproj" />
+	</ItemGroup>
+
+</Project>
