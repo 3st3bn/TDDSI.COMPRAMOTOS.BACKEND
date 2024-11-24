@@ -7,15 +7,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace TDDSI.COMPRAMOTOS.BACKEND.Domain.Models;
-public class Moto
-{
+public class CarritoCompra {
     [BsonId]
     [BsonRepresentation( BsonType.ObjectId )]
     public string Id { get; set; }
-    public string Marca {  get; set; }
-    public string Modelo { get; set; }  
+    public string Name { get; set; }
+    public string telefono { get; set; }
+
+    public string identificacion { get; set; }
+    public string Modelo { get; set; }
     public decimal Precio { get; set; }
-    public int AnioFabricacion { get; set; }
-    public string Tipo { get; set; }
-    public string EspecificacionesTecnicas { get; set; }
 }

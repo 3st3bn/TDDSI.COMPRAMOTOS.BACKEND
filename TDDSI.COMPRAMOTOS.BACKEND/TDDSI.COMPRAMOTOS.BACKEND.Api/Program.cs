@@ -1,8 +1,10 @@
 using TDDSI.COMPRAMOTOS.BACKEND.Api.Adapter;
 using TDDSI.COMPRAMOTOS.BACKEND.Api.Middlewares;
 using TDDSI.COMPRAMOTOS.BACKEND.Application.Extensions;
+using TDDSI.COMPRAMOTOS.BACKEND.Application.Interfaces;
 using TDDSI.COMPRAMOTOS.BACKEND.Application.Messaging;
 using TDDSI.COMPRAMOTOS.BACKEND.Application.Services;
+using TDDSI.COMPRAMOTOS.BACKEND.Domain.Implementations;
 using TDDSI.COMPRAMOTOS.BACKEND.Domain.Interfaces;
 using TDDSI.COMPRAMOTOS.BACKEND.Domain.Models;
 using TDDSI.COMPRAMOTOS.BACKEND.Infrastructure.PostgreSql.Extensions;
@@ -19,7 +21,10 @@ builder.Services
     .AddApplication( builder.Configuration )
     .AddDomainService()
     .AddInfrastructurePostgreSql( builder.Configuration );
-
+builder.Services.AddScoped<ICompraMotoService, CompraMotoService>();
+builder.Services.AddScoped<ICompraMotoRepository, CompraMotoRepository>();
+builder.Services.AddScoped<ICarritoCompra,  CarritoCompraRepository>();
+builder.Services.AddScoped<ICarritoCompraService, CarritoCompraService>();
 builder.Services.AddTransient<IDispatch, Dispatch>();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
