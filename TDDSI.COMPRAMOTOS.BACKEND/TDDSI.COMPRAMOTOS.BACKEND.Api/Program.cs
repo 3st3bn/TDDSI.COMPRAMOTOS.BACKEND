@@ -1,8 +1,10 @@
 using TDDSI.COMPRAMOTOS.BACKEND.Api.Adapter;
 using TDDSI.COMPRAMOTOS.BACKEND.Api.Middlewares;
 using TDDSI.COMPRAMOTOS.BACKEND.Application.Extensions;
+using TDDSI.COMPRAMOTOS.BACKEND.Application.Interfaces;
 using TDDSI.COMPRAMOTOS.BACKEND.Application.Messaging;
 using TDDSI.COMPRAMOTOS.BACKEND.Application.Services;
+using TDDSI.COMPRAMOTOS.BACKEND.Domain.Implementations;
 using TDDSI.COMPRAMOTOS.BACKEND.Domain.Interfaces;
 using TDDSI.COMPRAMOTOS.BACKEND.Domain.Models;
 using TDDSI.COMPRAMOTOS.BACKEND.Infrastructure.PostgreSql.Extensions;
@@ -19,7 +21,10 @@ builder.Services
     .AddApplication( builder.Configuration )
     .AddDomainService()
     .AddInfrastructurePostgreSql( builder.Configuration );
-
+builder.Services.AddScoped<ICompraMotoService, CompraMotoService>();
+builder.Services.AddScoped<ICompraMotoRepository, CompraMotoRepository>();
+builder.Services.AddScoped<ICarritoCompra,  CarritoCompraRepository>();
+builder.Services.AddScoped<ICarritoCompraService, CarritoCompraService>();
 builder.Services.AddTransient<IDispatch, Dispatch>();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -40,19 +45,3 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
-
-partial class Program {
-    static void Main( string[] args ) {
-        IMotoRepository motoRepository = new MotoRepositoryEnMemoria();
-        MotoService motoService = new MotoService( motoRepository );
-        ConsolaAdapter consola = new ConsolaAdapter( motoService );
-
-        consola.MostrarMotos();
-    }
-}
-
-public class MotoRepositoryEnMemoria : IMotoRepository {
-    // Implementación de métodos de la interfaz
-    public void AgregarMoto( Moto moto ) => throw new NotImplementedException();
-    public List<Moto> ObtenerMotos() => throw new NotImplementedException();
-}

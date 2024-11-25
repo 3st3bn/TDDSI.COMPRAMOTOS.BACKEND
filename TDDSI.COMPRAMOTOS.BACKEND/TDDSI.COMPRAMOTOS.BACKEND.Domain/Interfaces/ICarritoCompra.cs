@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 using TDDSI.COMPRAMOTOS.BACKEND.Domain.Models;
 
 namespace TDDSI.COMPRAMOTOS.BACKEND.Domain.Interfaces;
-public interface IMotoRepository 
-{
-    List<Moto> ObtenerMotos();
-    void AgregarMoto(Moto moto);
+public interface ICarritoCompra {
+    Task AddCarrito( CarritoCompra carritoCompra );
+    Task<List<CarritoCompra>> GetCompraList();
 }
