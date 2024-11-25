@@ -46,4 +46,13 @@ public class CompraMotoRepository : ICompraMotoRepository {
     public async Task<List<Moto>> GetMotoByTipo( string tipo ) {
         return await _motos.Find<Moto>(moto => moto.Tipo == tipo.ToLower()).ToListAsync();
     }
+
+    public  Task<List<Moto>> GetPreferenicasCompra( Preferencias preferencia ) {
+        return Task.FromResult(  _motos.Find<Moto>( moto => 
+        moto.Modelo == preferencia.Modelo.ToLower() &&
+        moto.Precio == preferencia.Precio && 
+        moto.Marca == preferencia.Marca.ToLower() && 
+        moto.Tipo == preferencia.Tipo.ToLower() ).ToList());
+    }
 }
+    

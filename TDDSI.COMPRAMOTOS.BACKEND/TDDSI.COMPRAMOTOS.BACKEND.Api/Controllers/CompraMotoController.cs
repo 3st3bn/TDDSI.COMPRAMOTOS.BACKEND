@@ -101,5 +101,16 @@ namespace TDDSI.COMPRAMOTOS.BACKEND.Api.Controllers {
                 return NotFound( new { Message = "No se encontraron motos para la marca especificada." } );
             }
         }
+        [HttpGet( "GetMotoByPreferens" )]
+        public async Task<ActionResult> GetMotoByPreferens( [FromQuery] Preferencias request ) {
+            var motos = await _compraMotoService.GetPreferenicasCompra( request );
+
+            if (motos != null) {
+                return Ok( motos );
+            }
+            else {
+                return NotFound( new { Message = "No se encontraron motos para la marca especificada." } );
+            }
+        }
     }
 }

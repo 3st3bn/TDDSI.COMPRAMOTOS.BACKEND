@@ -13,6 +13,5 @@ public interface ICompraMotoService {
     Task<List<Moto>> GetMotobyPrecio( int precio );
     Task<Moto> GetMotByModelo( string modelo );
     Task<List<Moto>> GetMotoByTipo( string tipo );
-
+    Task<List<Moto>> GetPreferenicasCompra( Preferencias request );
 }
-    

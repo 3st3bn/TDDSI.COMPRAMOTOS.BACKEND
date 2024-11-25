@@ -13,6 +13,6 @@ public interface ICompraMotoRepository {
     Task<List<Moto>> GetMoto( string marca );
     Task<Moto> GetMotByModelo( string modelo );
     Task<List<Moto>> GetMotoByTipo( string tipo);
-
+    Task<List<Moto>> GetPreferenicasCompra( Preferencias preferencia );
 }
 

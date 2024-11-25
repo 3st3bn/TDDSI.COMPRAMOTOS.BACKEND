@@ -46,4 +46,8 @@ public class CompraMotoService : ICompraMotoService {
     public Task<List<Moto>> GetMotoList() {
         return _compramotoRepository.GetMotoList();
     }
+
+    public Task<List<Moto>> GetPreferenicasCompra( Preferencias request ) {
+        return _compramotoRepository.GetPreferenicasCompra( request );
+    }
 }

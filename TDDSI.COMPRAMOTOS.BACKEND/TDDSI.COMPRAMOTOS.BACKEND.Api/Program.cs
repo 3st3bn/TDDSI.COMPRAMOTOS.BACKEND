@@ -45,19 +45,3 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
-
-partial class Program {
-    static void Main( string[] args ) {
-        IMotoRepository motoRepository = new MotoRepositoryEnMemoria();
-        MotoService motoService = new MotoService( motoRepository );
-        ConsolaAdapter consola = new ConsolaAdapter( motoService );
-
-        consola.MostrarMotos();
-    }
-}
-
-public class MotoRepositoryEnMemoria : IMotoRepository {
-    // Implementación de métodos de la interfaz
-    public void AgregarMoto( Moto moto ) => throw new NotImplementedException();
-    public List<Moto> ObtenerMotos() => throw new NotImplementedException();
-}
